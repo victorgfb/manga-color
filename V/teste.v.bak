@@ -1,0 +1,29 @@
+module teste(red,green,blue,r,g,b);
+
+input [11:0] red;
+input [11:0] grenn;
+input [11:0] blue;
+
+output [11:0] r;
+output [11:0] g;
+output [11:0] b;
+
+reg [11:0] branco = 12'hFFF;
+reg [11:0] preto = 12'h000;
+
+always(red or green or blue)
+begin
+	if(red == branco && green == branco && blue == branco)
+		begin
+			r <= preto;
+			g <= preto;
+			b <= preto;
+		end
+	else
+		begin
+			r <= red;
+			g <= green;
+			b <= blue;
+		end
+end
+endmodule

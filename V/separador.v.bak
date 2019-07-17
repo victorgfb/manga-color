@@ -1,0 +1,35 @@
+module separador(clk,red,green,blue,r,g,b);
+
+input [31:0]frame_count;
+input clk;
+input [11:0] red;
+input [11:0] green;
+input [11:0] blue;
+
+output reg [11:0] r;
+output reg [11:0] g;
+output reg [11:0] b;
+output reg [31:0] pix_count;
+
+reg [7:0] branco = 12'hFFF;
+reg [7:0] preto = 12'h000;
+reg [31:0] qtdpix = 32'b00000000;
+reg [31:0] aux;
+reg flag;
+always@(posedge clk)
+begin
+	if(red[11:4] == branco && green[11:4] == branco && blue[11:4] == branco)
+		begin
+			r <= preto;
+			g <= preto;
+			b <= preto;
+		end
+	else
+		begin
+			r <= red;
+			g <= green;
+			b <= blue;
+		end
+end
+
+endmodule
